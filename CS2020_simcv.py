@@ -8,7 +8,7 @@ import pickle
 
 path = '/home/ubuntu/python/2020/Project_LRL'
 T = 4000
-R = 5000 # the number of replications
+R = 5000 # the number of replications 
 rw0 = [0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60]
 N_rw = len(rw0)
 GSW = np.zeros((R,2,N_rw)) # to store the critical values
@@ -40,7 +40,7 @@ def sim_process(T,rw,seeds):
         E2[1,0] = E2[0,1]
         E2[1,1] = np.sum((Wx[0:Tx1]**2)*(1/T))-np.sum((Wx[0:Tx0]**2)*(1/T))
         W1 = np.max([W1,E1.T@np.linalg.inv(E2)@E1])
-        W0 = np.max([W0,])
+        #W0 = np.max([W0,])
         W0 = np.max([W0,np.sum(np.sqrt(T)*dWy[-wr:T-1]*dWx[-wr-tau:T-1-tau])**2/rw+E1[0,0]**2/E2[0,0]])
     return [W0,W1]
 
